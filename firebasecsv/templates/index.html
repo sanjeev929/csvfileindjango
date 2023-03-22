@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+}
+
+.loader {
+  display: none;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.loading {
+  border: 10px solid #ccc;
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  border-top-color: #1ecd97;
+  border-left-color: #1ecd97;
+  animation: spin 1s infinite ease-in;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+  </style>
+  </head>
+<body >
+<form action="/addfile/"  method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+  <br>  
+  <label for="myfile">Select a file:</label>
+  <input type="file" id="myfile" name="myfile"><br><br>
+  <input type="submit" class="sbtn btn btn-secondary btn-c" onclick="spinner()">
+</form>
+
+<div class="loader">
+  <div class="loading">
+  </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+    function spinner() {
+        document.getElementsByClassName("loader")[0].style.display = "block";
+    }
+</script>  
+</script>
+</body>
+</html>
